@@ -1,0 +1,18 @@
+# See: https://asimov-specs.github.io/module-manifest/
+name: ollama
+label: Ollama
+title: ASIMOV Ollama Module
+summary: LLM inference powered by Ollama
+links:
+  - https://github.com/asimov-modules/asimov-ollama-module
+  - https://crates.io/crates/asimov-ollama-module
+provides:
+  programs:
+    - asimov-ollama-prompter
+config:
+  variables:
+    - name: endpoint
+      environment: OLLAMA_API_ENDPOINT
+      default: http://localhost:11434
+    - name: model
+      environment: OLLAMA_MODEL
