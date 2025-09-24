@@ -2,7 +2,7 @@
 name: ollama
 label: Ollama
 title: ASIMOV Ollama Module
-summary: LLM inference powered by Ollama
+summary: LLM inference powered by Ollama.
 links:
   - https://github.com/asimov-modules/asimov-ollama-module
   - https://crates.io/crates/asimov-ollama-module
