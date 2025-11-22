@@ -13,7 +13,7 @@ provides:
 config:
   variables:
     - name: endpoint
-      environment: OLLAMA_API_ENDPOINT
+      environment: ASIMOV_OLLAMA_API_ENDPOINT
       default: http://localhost:11434
     - name: model
-      environment: OLLAMA_MODEL
+      environment: ASIMOV_OLLAMA_MODEL

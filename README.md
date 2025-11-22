@@ -45,14 +45,14 @@ asimov module config ollama
 Or through environment variables
 
 ```bash
-export OLLAMA_MODEL="..."
+export ASIMOV_OLLAMA_MODEL="..."
 ```
 
 ### Optional configuration
 
-| Name       | Environment Variable  | Default                  |
-| ---------- | --------------------- | ------------------------ |
-| `endpoint` | `OLLAMA_API_ENDPOINT` | `http://localhost:11434` |
+| Name       | Environment Variable         | Default                  |
+| ---------- | ---------------------------- | ------------------------ |
+| `endpoint` | `ASIMOV_OLLAMA_API_ENDPOINT` | `http://localhost:11434` |
 
 ## 📚 Reference
 
