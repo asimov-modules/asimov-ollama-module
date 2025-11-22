@@ -15,9 +15,11 @@ struct Options {
     #[clap(flatten)]
     flags: StandardOptions,
 
+    /// Choose which model to use.
     #[clap(long, short = 'm')]
     model: Option<String>,
 
+    /// Maximum number of tokens to generate.
     #[clap(long)]
     max_tokens: Option<usize>,
 
