@@ -18,6 +18,9 @@ struct Options {
     #[clap(long, short = 'm')]
     model: Option<String>,
 
+    #[clap(long)]
+    max_tokens: Option<usize>,
+
     input: Option<String>,
     output: Option<String>,
 }
@@ -92,6 +95,7 @@ pub fn main() -> Result<SysexitsError> {
     let options = asimov_ollama_module::Options::builder()
         .endpoint(endpoint)
         .model(model)
+        .maybe_max_tokens(options.max_tokens)
         .build();
 
     let response =

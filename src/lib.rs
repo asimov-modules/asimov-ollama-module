@@ -13,15 +13,21 @@ pub struct Options {
     #[builder(default = "http://localhost:11434")]
     pub endpoint: String,
 
+    pub max_tokens: Option<usize>,
+
     pub model: String,
 }
 
 pub fn generate(input: impl AsRef<str>, options: &Options) -> Result<Vec<String>> {
-    let req = json!({
+    let mut req = json!({
         "model": options.model,
         "prompt": input.as_ref(),
         "stream": false
     });
+
+    if let Some(max_tokens) = options.max_tokens {
+        req["options"] = json!({"num_predict":max_tokens});
+    }
 
     let mut resp = ureq::Agent::config_builder()
         .http_status_as_error(false)
@@ -35,14 +41,13 @@ pub fn generate(input: impl AsRef<str>, options: &Options) -> Result<Vec<String>
     tracing::debug!(response = ?resp);
 
     let status = resp.status();
-    tracing::debug!(status = status.to_string());
 
     let resp: Value = resp
         .body_mut()
         .read_json()
         .context("unable to read HTTP response body")?;
 
-    tracing::debug!(body = ?resp);
+    tracing::debug!(response = %resp);
 
     if !status.is_success() {
         tracing::debug!(%status, "Received an unsuccessful response");
