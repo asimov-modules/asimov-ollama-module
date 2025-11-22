@@ -13,6 +13,7 @@
 ## 🛠️ Prerequisites
 
 - [Rust] 1.85+ (2024 edition) if building from source code
+- An available [Ollama](https://github.com/ollama/ollama) endpoint.
 
 ## ⬇️ Installation
 
@@ -28,10 +29,36 @@ asimov module install ollama -v
 cargo install asimov-ollama-module
 ```
 
+## ⚙ Setup
+
+This module uses an Ollama endpoint to generate responses.
+On macOS a simple approach to run Ollama locally is:
+
+```console
+$ brew install ollama
+$ brew services start ollama  # Start the service formula immediately and register it to launch at login (or boot).
+```
+
+Then you should be able to use `asimov-ollama-prompter`.
+Alternatively downloading and running [the application](https://ollama.com/download) should also work.
+
+### Downloading Models
+
+You can download [a model](https://ollama.com/search) either through the CLI:
+
+```console
+$ ollama pull gemma3:1b
+```
+
+Or in the application:
+
+![Model download in Ollama application](./etc/model_download.png)
+
 ## 👉 Examples
 
-```bash
-asimov-ollama-prompter
+```console
+$ echo "In two sentences, why is the sky blue?" | asimov-ollama-prompter -m gemma3:1b
+The sky appears blue because of a phenomenon called Rayleigh scattering, where sunlight is split into different colors of light. Blue light is scattered more effectively by the tiny particles in the atmosphere than other colors, making it visible to our eyes.
 ```
 
 ## ⚙ Configuration
